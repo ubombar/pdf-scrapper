@@ -19,6 +19,7 @@ def create_visitor_body(highlights: list, coords:list):
         x, y = tm[4], tm[5]
         if y > ymin and y < ymax: # Calculate according to coords
             highlights.append(text)
+            
     return visitor_body
 
 def extract_color_hex(annot_obj) -> str:
@@ -45,7 +46,9 @@ for page in reader.pages:
                 visitor_body = create_visitor_body(highlights, coords)
                 t = page.extract_text(0, visitor_text=visitor_body)
 
-                print("Added one new (green) highlight:", t)
+                print("Added one new (green) highlight:", highlights)
+
+                break
     # 
     # print(page.extract_text(0))
 
